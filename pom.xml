@@ -37,5 +37,8 @@
     <artifactId>util</artifactId>
     <version>1.0</version>
 
+    <build>
+        <finalName>util</finalName>
+    </build>
 
 </project>

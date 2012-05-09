@@ -27,26 +27,32 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-package com.jamezp.util;
-
 import java.io.PrintStream;
-import java.util.Properties;
+import java.util.Map;
 
 /**
  * @author <a href="mailto:jperkins@redhat.com">James R. Perkins</a>
  */
-public class DumpSystemProperties {
+public class PrintSystemEnvironment {
 
     public static void main(final String[] args) {
-        print(System.out);
+        if (args != null && args.length > 0) {
+            print(System.out, args[0]);
+        } else {
+            print(System.out);
+        }
     }
 
     public static void print(final PrintStream out) {
-        out.println("System Properties:");
-        final Properties props = System.getProperties();
-        for (String key : props.stringPropertyNames()) {
-            out.printf("  %s=%s%n", key, props.getProperty(key));
+        out.println("System Environment:");
+        final Map<String, String> env = System.getenv();
+        for (String key : env.keySet()) {
+            out.printf("  %s=%s%n", key, env.get(key));
         }
         out.println();
+    }
+
+    public static void print(final PrintStream out, final String key) {
+        out.printf("%s=%s%n", key, System.getenv(key));
     }
 }

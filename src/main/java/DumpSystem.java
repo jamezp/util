@@ -27,15 +27,13 @@
  * either expressed or implied, of the FreeBSD Project.
  */
 
-package com.jamezp.util;
-
 /**
  * @author <a href="mailto:jperkins@redhat.com">James R. Perkins</a>
  */
 public class DumpSystem {
 
     public static void main(final String[] args) {
-        DumpSystemEnvironment.print(System.out);
-        DumpSystemProperties.print(System.out);
+        PrintSystemEnvironment.print(System.out);
+        PrintSystemProperties.print(System.out);
     }
 }
